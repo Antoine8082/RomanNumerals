@@ -67,4 +67,25 @@ public class RomanNumeralsTests {
     public void testConvertM() {
         assertEquals("M", RomanNumerals.convert(1000));
     }
+    @Test
+    public void testConvertExtactMMMMDCCCLXXXVIII() {
+        assertEquals("MMMMDCCCLXXXVIII", RomanNumerals.convert(4888));
+    }
+
+    @Test(expected = Error.class)
+    public void testConvertNegativeValue() {
+        RomanNumerals.convert(-1);
+    }
+
+    @Test(expected = Error.class)
+    public void testConvertTooLowValue() {
+        RomanNumerals.convert(0);
+    }
+
+    @Test(expected = Error.class)
+    public void testConvertTooHighValue() {
+        RomanNumerals.convert(5001);
+    }
+
+
 }
