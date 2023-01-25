@@ -1,4 +1,8 @@
 import org.junit.Test;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import static org.junit.Assert.*;
 
 public class RomanNumeralsTests {
@@ -86,6 +90,18 @@ public class RomanNumeralsTests {
     public void testConvertTooHighValue() {
         RomanNumerals.convert(5001);
     }
+    @Test
+    public void testInputMismatchExceptionString() {
+        Scanner sc = new Scanner("abc");
+        assertThrows(InputMismatchException.class, () -> RomanNumerals.convert(sc.nextInt()));
+        sc.close();
+    }
 
+    @Test
+    public void testInputMismatchExceptionOther() {
+        Scanner sc = new Scanner("-+*/");
+        assertThrows(InputMismatchException.class, () -> RomanNumerals.convert(sc.nextInt()));
+        sc.close();
+    }
 
 }
